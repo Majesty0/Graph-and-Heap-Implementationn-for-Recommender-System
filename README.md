@@ -109,28 +109,6 @@ python -m streamlit run "Recommender System.py"
 python "Recommender System.py"
 ```
 
----
-
-## Screenshots
-
-> Add your UI images in a `screenshots/` folder at the project root.
-
-- `dashboard-overview`![alt text](image.png)
-- `recommendation-analytics`![alt text](image-1.png)
-- `network-graph`![alt text](image-2.png)
-- `demo.gif` (optional)
-- `analytics`![alt text](image-3.png)
-
-
-#### Video Demo:
-
-```html
-<video width="100%" controls>
-  <source src="demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-```
-
 > **Max size**: ~100MB on GitHub. GitHub supports MP4, WebM, Ogg formats.
 
 ### Optional Demo GIF
