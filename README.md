@@ -7,7 +7,21 @@ A hybrid recommendation engine that combines:
 
 The project includes a polished **Streamlit dashboard** for interactive exploration and a **CLI mode** for quick terminal testing.
 
+> **📚 For in-depth technical discussion**: Read [ARCHITECTURE.md](ARCHITECTURE.md) for algorithms, design decisions, complexity analysis, and extension points.
+
 ---
+
+## What This Project Does
+
+At its core: **Given a user, recommend items they will likely enjoy.**
+
+This is solved using a **hybrid three-factor approach**:
+
+1. **User-based Collaborative Filtering**: "What do users similar to me prefer?"
+2. **Item-based Collaborative Filtering**: "How similar is this to items I already like?"
+3. **Popularity**: "How well-known/trusted is this item?"
+
+These three signals are blended (65% user-CF, 25% item-CF, 10% popularity) to balance exploration and exploitation.
 
 ## Features
 
@@ -24,6 +38,8 @@ The project includes a polished **Streamlit dashboard** for interactive explorat
   - Score breakdown charts
   - Recommendation strength chart
   - Interactive user-item network graph
+- Modular engine design and real-time updates
+- Dual-index architecture for O(1) lookups
 
 ---
 
@@ -119,22 +135,65 @@ python "Recommender System.py"
 
 ## How the Hybrid Score Works
 
-For each candidate item:
+For each candidate item not yet rated by the target user:
 
-\[
-\text{Final Score} = 0.65 \times \text{User-CF} + 0.25 \times \text{Item-CF} + 0.10 \times \text{Popularity}
-\]
+```
+Final Score = 0.65 × User-CF + 0.25 × Item-CF + 0.10 × Popularity
+```
 
-- **User-CF**: weighted influence from similar users
-- **Item-CF**: similarity to items the user already interacted with
-- **Popularity**: normalized item interaction frequency
+### Components
+
+**User-CF (65%)**: Aggregated ratings from similar users
+```
+User-CF = Σ [similarity(target, neighbor) × rating(neighbor, item)]
+```
+
+**Item-CF (25%)**: How similar is this to items I already rated?
+```
+Item-CF = Σ [similarity(seen_item, candidate) × rating(target, seen_item)]
+```
+
+**Popularity (10%)**: Item interaction frequency
+```
+Popularity = |Users who rated item| / Total Users
+```
+
+→ **See [ARCHITECTURE.md](ARCHITECTURE.md) for mathematical details and complexity analysis.**
 
 ---
 
-## Notes
+## Core Concepts
 
-- The app auto-detects Streamlit runtime and renders GUI in Streamlit context.
-- When launched with plain Python, it runs a CLI demonstration.
+### Dual-Index Architecture
+
+```python
+user_items = {"U1": {"I1": 5.0, "I2": 4.0}, ...}  # Fast user lookup
+item_users = {"I1": {"U1": 5.0, ...}, ...}         # Fast item lookup
+graph = nx.Graph()                                 # For visualization
+```
+
+Redundancy for speed: both O(1) lookups.
+
+### Similarity Metrics
+
+Both users and items use a 60/40 blend:
+- **Graph Overlap (60%)**: Jaccard-like ratio of common connections
+- **Cosine Similarity (40%)**: Alignment of rating vectors on common items
+
+### Top-N Selection
+
+Using `heapq.nlargest(n, candidates)` instead of full sort: O(n log n) but faster in practice.
+
+---
+
+## Technical Notes
+
+- **In-memory**: No database required
+- **Real-time**: Update recommendations instantly via `add_interaction()`
+- **Modular**: Engine testable independently of UI
+- **Extensible**: Add custom similarity metrics or scoring components
+
+→ **See [ARCHITECTURE.md](ARCHITECTURE.md) for performance, design decisions, and extension examples.**
 
 ---
 
