@@ -115,49 +115,14 @@ python "Recommender System.py"
 
 > Add your UI images in a `screenshots/` folder at the project root.
 
-### Dashboard Overview
+- `dashboard-overview`![alt text](image.png)
+- `recommendation-analytics`![alt text](image-1.png)
+- `network-graph`![alt text](image-2.png)
+- `demo.gif` (optional)
+- `analytics`![alt text](image-3.png)
 
-![Dashboard Overview](screenshots/dashboard-overview.png)
 
-### Recommendation Analytics
-
-![Recommendation Analytics](screenshots/recommendation-analytics.png)
-
-### Interactive Network Graph
-
-![Interactive Network Graph](screenshots/network-graph.png)
-
-### Video Demo
-
-#### How to Add Your Video Demo
-
-1. **Record your demo** using any screen recorder:
-   ```
-   OBS Studio, ScreenFlow, Windows Screen Recorder, or Camtasia
-   ```
-   Show your Streamlit dashboard running with:
-   - Sidebar controls and interactions
-   - Real-time recommendation updates
-   - Network graph visualization
-   - Score component breakdowns
-
-2. **Export as MP4** (if recording tool doesn't default to MP4)
-   ```bash
-   # Example: Convert MOV to MP4 with ffmpeg
-   ffmpeg -i demo.mov -c:v libx264 -preset fast demo.mp4
-   ```
-
-3. **Add to repository**
-   ```bash
-   cp your-video.mp4 demo.mp4
-   git add demo.mp4
-   git commit -m "Add video demonstration of dashboard"
-   git push origin main
-   ```
-
-4. **GitHub displays it automatically**—no extra steps needed!
-
-#### Video Displays Here:
+#### Video Demo:
 
 ```html
 <video width="100%" controls>
