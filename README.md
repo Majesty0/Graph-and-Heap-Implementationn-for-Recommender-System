@@ -127,6 +127,47 @@ python "Recommender System.py"
 
 ![Interactive Network Graph](screenshots/network-graph.png)
 
+### Video Demo
+
+#### How to Add Your Video Demo
+
+1. **Record your demo** using any screen recorder:
+   ```
+   OBS Studio, ScreenFlow, Windows Screen Recorder, or Camtasia
+   ```
+   Show your Streamlit dashboard running with:
+   - Sidebar controls and interactions
+   - Real-time recommendation updates
+   - Network graph visualization
+   - Score component breakdowns
+
+2. **Export as MP4** (if recording tool doesn't default to MP4)
+   ```bash
+   # Example: Convert MOV to MP4 with ffmpeg
+   ffmpeg -i demo.mov -c:v libx264 -preset fast demo.mp4
+   ```
+
+3. **Add to repository**
+   ```bash
+   cp your-video.mp4 demo.mp4
+   git add demo.mp4
+   git commit -m "Add video demonstration of dashboard"
+   git push origin main
+   ```
+
+4. **GitHub displays it automatically**—no extra steps needed!
+
+#### Video Displays Here:
+
+```html
+<video width="100%" controls>
+  <source src="demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+```
+
+> **Max size**: ~100MB on GitHub. GitHub supports MP4, WebM, Ogg formats.
+
 ### Optional Demo GIF
 
 ![Live Demo](screenshots/demo.gif)
