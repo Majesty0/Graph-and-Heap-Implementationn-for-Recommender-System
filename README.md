@@ -95,6 +95,28 @@ python "Recommender System.py"
 
 ---
 
+## Screenshots
+
+> Add your UI images in a `screenshots/` folder at the project root.
+
+### Dashboard Overview
+
+![Dashboard Overview](screenshots/dashboard-overview.png)
+
+### Recommendation Analytics
+
+![Recommendation Analytics](screenshots/recommendation-analytics.png)
+
+### Interactive Network Graph
+
+![Interactive Network Graph](screenshots/network-graph.png)
+
+### Optional Demo GIF
+
+![Live Demo](screenshots/demo.gif)
+
+---
+
 ## How the Hybrid Score Works
 
 For each candidate item:
